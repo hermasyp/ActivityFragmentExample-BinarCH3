@@ -7,9 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.catnip.activityfragmentexample.R
-import com.catnip.activityfragmentexample.databinding.FragmentOneBinding
 import com.catnip.activityfragmentexample.databinding.FragmentThreeBinding
-import com.catnip.activityfragmentexample.databinding.FragmentTwoBinding
 import com.catnip.activityfragmentexample.presentation.otheractivity.OtherActivity
 
 class FragmentThree : Fragment() {

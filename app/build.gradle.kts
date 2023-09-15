@@ -54,4 +54,8 @@ dependencies {
     implementation("androidx.navigation:navigation-ui-ktx:2.7.2")
     implementation("io.coil-kt:coil:2.4.0")
 
+    implementation("androidx.recyclerview:recyclerview:1.3.1")
+    //fragment ktx
+    implementation("androidx.fragment:fragment-ktx:1.6.1")
+
 }
