@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.catnip.activityfragmentexample.data.AvengersDataSource
 import com.catnip.activityfragmentexample.data.AvengersDataSourceImpl
 import com.catnip.activityfragmentexample.databinding.FragmentAvengerListBinding
 import com.catnip.activityfragmentexample.model.Person
@@ -16,9 +18,13 @@ class AvengerListFragment : Fragment() {
 
     private lateinit var binding: FragmentAvengerListBinding
 
+    private val dataSource : AvengersDataSource by lazy {
+        AvengersDataSourceImpl()
+    }
+
     private val adapter: AvengerListAdapter by lazy {
-        AvengerListAdapter {
-            navigateToFragmentTwo(it)
+        AvengerListAdapter { person ->
+            navigateToFragmentTwo(person)
         }
     }
 
@@ -38,7 +44,14 @@ class AvengerListFragment : Fragment() {
     private fun setupRecyclerview() {
         binding.rvAvengers.adapter = adapter
         binding.rvAvengers.layoutManager = LinearLayoutManager(requireContext())
-        adapter.setData(AvengersDataSourceImpl().getAvengersData())
+
+        //grid list
+        //binding.rvAvengers.layoutManager = GridLayoutManager(requireContext(),2)
+
+        //horizontal list
+        //binding.rvAvengers.layoutManager = LinearLayoutManager(requireContext(),LinearLayoutManager.HORIZONTAL,false)
+
+        adapter.setData(dataSource.getAvengersData())
     }
 
     private fun navigateToFragmentTwo(person: Person? = null) {

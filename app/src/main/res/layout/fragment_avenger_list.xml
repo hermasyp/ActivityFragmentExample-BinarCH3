@@ -8,6 +8,9 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_avengers"
+        tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        tools:listitem="@layout/item_list_avengers"
+        tools:spanCount="2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

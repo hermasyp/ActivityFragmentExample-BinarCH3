@@ -18,6 +18,7 @@
     <TextView
         android:id="@+id/tv_name"
         android:layout_width="0dp"
+        tools:text="@tools:sample/full_names"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="8dp"
         app:layout_constraintBottom_toBottomOf="parent"

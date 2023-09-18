@@ -19,7 +19,7 @@ class AvengerListAdapter(private val onItemClick: (Person) -> Unit) :
 
     private val differ =  AsyncListDiffer(this,object : DiffUtil.ItemCallback<Person>(){
         override fun areItemsTheSame(oldItem: Person, newItem: Person): Boolean {
-            return oldItem.name == newItem.id
+            return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(oldItem: Person, newItem: Person): Boolean {
@@ -27,8 +27,12 @@ class AvengerListAdapter(private val onItemClick: (Person) -> Unit) :
         }
     })
 
+    //private val data = mutableListOf<Person>()
+
     fun setData(data : List<Person>){
         differ.submitList(data)
+        //this@AvengerListAdapter.data.clear()
+        //this@AvengerListAdapter.data.addAll(data)
         notifyItemRangeChanged(0,data.size)
     }
 
@@ -42,23 +46,13 @@ class AvengerListAdapter(private val onItemClick: (Person) -> Unit) :
     }
 
     override fun getItemCount(): Int = differ.currentList.size
+    //override fun getItemCount(): Int = data.size
 
     override fun onBindViewHolder(holder: AvengerItemListViewHolder, position: Int) {
         holder.bind(differ.currentList[position])
+        //holder.bind(data[position])
     }
 
 }
 
 
-class AvengerItemListViewHolder(
-    private val binding: ItemListAvengersBinding,
-    private val onItemClick: (Person) -> Unit
-) : ViewHolder(binding.root) {
-    fun bind(item: Person) {
-        binding.root.setOnClickListener {
-            onItemClick.invoke(item)
-        }
-        binding.ivProfileImg.load(item.profilePictUrl)
-        binding.tvName.text = item.name
-    }
-}
